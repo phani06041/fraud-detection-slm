@@ -75,37 +75,3 @@ The project expects these files in the repository:
 ./data/customers.csv
 ```
 
-## 5. Output schema
-
-Every prediction is validated to:
-
-```json
-{
-  "transaction_id": "TXN_00001",
-  "is_fraud": true,
-  "confidence": 0.92,
-  "justification": "One concise sentence based on observed evidence."
-}
-```
-
-`is_fraud` is a JSON boolean, `confidence` is constrained to `[0, 1]`, and
-`transaction_id` must match the original input row.
-
-## 6. Notes
-
-- The provided dataset does not contain a true fraud-label column.
-- The model path is optional and the script falls back safely when needed.
-- For a normal run, use the direct command above and do not add extra setup steps.
-- The goal is a simple, reproducible execution from the repo root.
-
-## 13. 90-minute strategy
-
-1. Run the deterministic pipeline first.
-2. Confirm `predictions.json` is produced.
-3. Enable SLM inference.
-4. If GPU/time permits, run the compact LoRA pass.
-5. Never allow model download or malformed generation to block final output.
-6. Keep the final JSON validator/fallback in the execution path.
-
-This prioritizes correctness, security, reproducibility and a guaranteed output
-over an expensive model-training experiment.
