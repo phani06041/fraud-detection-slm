@@ -97,9 +97,6 @@ Every prediction is validated to:
 - The model path is optional and the script falls back safely when needed.
 - For a normal run, use the direct command above and do not add extra setup steps.
 - The goal is a simple, reproducible execution from the repo root.
-- batch size: 2
-- gradient accumulation: 4
-- learning rate: 2e-4
 
 ## 13. 90-minute strategy
 
